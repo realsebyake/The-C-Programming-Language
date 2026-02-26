@@ -1,15 +1,11 @@
 #include <stdio.h>
 
-void A1() {
+int main() {
 
 int fahr;
 
 for (fahr = 0; fahr <= 300; fahr = fahr + 20)
     printf("%3d %6.1f\n", fahr, (5.0/9.0)*(fahr-32));
 
-}
-
-int main() {
-    A1();
-    return 0;
+     return 0;
 }
