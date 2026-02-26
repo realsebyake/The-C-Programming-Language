@@ -1,6 +1,7 @@
-#include <stdio.h>
 // 2x / 3 + 7  = 9 (equation represented in the functions) 
 // this is my own example, does not appear in K&R
+
+#include <stdio.h>
 
 void integerEquation() {
       
