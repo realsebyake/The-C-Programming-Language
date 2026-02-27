@@ -27,8 +27,16 @@ void Array() {
 
 }
 
+void Array2() {
+
+    int c, i, n;
+    n = 0;
+
+}
+
 int main() {
 
-    Array();
+    //Array();
+    Array2();
     return 0;
 }
