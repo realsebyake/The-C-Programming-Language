@@ -70,7 +70,7 @@ return 0;
 
 // Ex 1-22
 
-int main() {
+/* int main() {
 
     char line[MAXLINE];
     int c, i, j, k, lastspace;
@@ -101,6 +101,13 @@ int main() {
     }
 }
 
+
+return 0;
+} */
+
+int main() {
+
+    
 
 return 0;
 }
