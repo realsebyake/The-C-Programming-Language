@@ -6,6 +6,11 @@
 #define MAXLINE 1000 // needed for ex 1-22
 #define FOLD 40 // needed for ex 1-22
 
+#define NORMAL 0 //    all below are ex 1-23
+#define IN_STRING 1
+#define IN_BLOCK_COMMENT 2
+#define IN_LINE_COMMENT 3
+
 // Ex 1-20
 
 /* int main() {
@@ -91,24 +96,70 @@ return 0;
             line[k] = line[lastspace + 1 + k];
         i = i - lastspace - 1;
         lastspace = -1;
-    } else if (c == '\n') {
+    }
+    else if (c == '\n') {
         line[i+1] = '\0';
         printf("%s", line);
         i = 0;
         lastspace = -1;
-    } else {
+    }
+    else {
         ++i;
     }
-}
-
+    }
 
 return 0;
 } */
 
+// Ex 1-23
+
 int main() {
 
-    
+int c, next;
+int state = NORMAL;
 
+    while ((c = getchar()) != EOF) {
+        if (state == NORMAL) {
+            if (c == '/') {
+                next = getchar();
+                if (next == '/') {
+                    state = IN_LINE_COMMENT;
+                }
+                else if (next == '*') {
+                    state = IN_BLOCK_COMMENT;
+                }
+                else {
+                    putchar('/');
+                    ungetc(next, stdin);
+                }
+            }
+            else {
+                putchar(c); 
+            }
+        }
+        else if (state == IN_LINE_COMMENT) {
+            if (c == '\n') {
+                state = NORMAL;
+                putchar('\n');
+            }
+            else { // empty because it shouldn't do anything
+            }
+        }
+        else if (state == IN_BLOCK_COMMENT) {
+            if (c == '*') {
+                next = getchar();
+                if (next == '/') {
+                    state = NORMAL;
+                    putchar(' ');
+                }
+                else {
+                    ungetc(next, stdin);
+                }
+            }
+        }
+    }
 return 0;
 }
+
+
 
