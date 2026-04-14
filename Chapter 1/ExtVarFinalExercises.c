@@ -10,6 +10,7 @@
 #define IN_STRING 1
 #define IN_BLOCK_COMMENT 2
 #define IN_LINE_COMMENT 3
+#define IN_CHAR 4
 
 // Ex 1-20
 
@@ -113,7 +114,7 @@ return 0;
 
 // Ex 1-23
 
-int main() {
+/* int main() {
 
 int c, next;
 int state = NORMAL;
@@ -132,6 +133,14 @@ int state = NORMAL;
                     putchar('/');
                     ungetc(next, stdin);
                 }
+            }
+            else if (c == '"') {
+                state = IN_STRING;
+                putchar(c);
+            }
+            else if (c == '\'') {
+                state = IN_CHAR;
+                putchar(c);
             }
             else {
                 putchar(c); 
@@ -157,8 +166,41 @@ int state = NORMAL;
                 }
             }
         }
+        else if (state == IN_STRING) {
+            if (c == '"') {
+                state = NORMAL;
+                putchar(c);
+            }
+            else if (c == '\\') {
+                getchar();
+            }
+            else {
+                putchar(c);
+            }
+        }
+        else if (state == IN_CHAR) {
+            if (c == '\'') {
+                state = NORMAL;
+                putchar(c);
+            }
+            else if (c == '\\') {
+                getchar();
+            }
+            else {
+                putchar(c);
+            }
+        }
     }
 return 0;
+} */
+
+// Ex 1-24
+
+int main() {
+
+
+
+return 0
 }
 
 
