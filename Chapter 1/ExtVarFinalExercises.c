@@ -6,11 +6,13 @@
 #define MAXLINE 1000 // needed for ex 1-22
 #define FOLD 40 // needed for ex 1-22
 
-#define NORMAL 0 //    all below are ex 1-23
+#define NORMAL 0 // all below are ex 1-23 / 1-24
 #define IN_STRING 1
 #define IN_BLOCK_COMMENT 2
 #define IN_LINE_COMMENT 3
 #define IN_CHAR 4
+
+#define NORMAL_SYNTAX 5 // all below are ex 1-24
 
 // Ex 1-20
 
@@ -198,10 +200,101 @@ return 0;
 
 int main() {
 
+int parens = 0, brackets = 0, braces = 0;
+int c, next;
+int state = NORMAL_SYNTAX;
+
+    while ((c = getchar()) != EOF) {
+        if (state == NORMAL_SYNTAX) {
+            if (c == '/') {
+                next = getchar();
+                if (next == '/') {
+                    state = IN_LINE_COMMENT;
+                }
+                else if (next == '*') {
+                    state = IN_BLOCK_COMMENT;
+                }
+                else {
+                    ungetc(next, stdin);
+                }
+            }
+            else if (c == '"') {
+                state = IN_STRING;
+            }
+            else if (c == '\'') {
+                state = IN_CHAR;
+            }
+            else {
+                if (c == '(') {
+                    ++parens;
+                }
+                else if (c == ')') {
+                    --parens;
+                }
+                else if (c == '{') {
+                    ++braces;
+                }
+                else if (c == '}') {
+                    --braces;
+                }
+                else if (c == '[') {
+                    ++brackets;
+                }
+                else if (c == ']') {
+                    --brackets;
+                }
+            }
+        }
+        else if (state == IN_LINE_COMMENT) {
+            if (c == '\n') {
+                state = NORMAL_SYNTAX;
+            }
+            else {
+            }
+        }
+        else if (state == IN_BLOCK_COMMENT) {
+            if (c == '*') {
+                next = getchar();
+                if (next == '/') {
+                    state = NORMAL_SYNTAX;
+                }
+                else {
+                    ungetc(next, stdin);
+                }
+            }
+        }
+        else if (state == IN_STRING) {
+            if (c == '"') {
+                state = NORMAL_SYNTAX;
+            }
+            else if (c == '\\') {
+                getchar();
+            }
+            else {
+            }
+        }
+        else if (state == IN_CHAR) {
+            if (c == '\'') {
+                state = NORMAL_SYNTAX;
+            }
+            else if (c == '\\') {
+                getchar();
+            }
+            else {
+            }
+        }
+    }
+
+    if (parens != 0) {
+        printf("ERROR: Unbalanced parentheses\n");
+    }
+    if (braces != 0) {
+        printf("ERROR: Unbalanced braces\n");
+    }
+    if (brackets != 0) {
+        printf("ERROR: Unbalanced brackets\n");
+    }
 
 
-return 0
+return 0;
 }
-
-
-
