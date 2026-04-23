@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 
-int main() {
+void easy_part() { // ex 1-21 easy part
 
 printf("CHAR_MAX: %d\n", CHAR_MAX);
 printf("CHAR_MIN: %d\n", CHAR_MIN);
@@ -16,6 +16,19 @@ printf("UCHAR_MAX: %d\n", UCHAR_MAX);
 printf("UINT_MAX: %u\n", UINT_MAX);
 printf("ULONG_MAX: %lu\n", ULONG_MAX);
 printf("USHRT_MAX: %d\n", USHRT_MAX);
+
+}
+
+void hard_part() { // ex 1-21 hard part
+
+    // to-do later on
+
+}
+
+int main() {
+
+easy_part();
+// hard_part();
 
 return 0;
 }
