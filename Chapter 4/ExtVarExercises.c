@@ -70,7 +70,7 @@ int main() {
             }
             break;
         case 'P':
-            if (sp > 0) 
+            if (sp > 0)
                 printf("Top element: %f\n", val[sp-1]);
             else
                 printf("error: stack is empty\n");
@@ -145,7 +145,7 @@ double pop(void) {
 }
 
 /* int getop(char s[]) { // Commented out due to 4-11
-    
+
     int i, c, next, neg;
     neg = 0;
 
