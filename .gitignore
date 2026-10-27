@@ -1,14 +1,10 @@
-# Compiled binaries
-Arguments
-Arrays
-CharArrays
-ExtVarFinalExercises
-ExtVariablesScopes
-ForStatement
-Functions
-getChar
-Hello
-VariablesExpressions
-chararrayex
-VariablesExample
-a.out
+# Ignore everything, then whitelist source files
+*
+!*/
+!*.c
+!*.h
+!*.txt
+!*.md
+!.gitignore
+!Makefile
+!LICENSE
